@@ -6,6 +6,13 @@
     <title>Secure Withdrawal | Apex Trade Solutions</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        /* This creates the soft purple to black transition */
+        body {
+            background: linear-gradient(135deg, #121212 0%, #4b3d61 100%);
+            background-attachment: fixed; /* Keeps the background still while scrolling */
+            margin: 0;
+        }
+
         .timer-bg { background: #fff1f2; border: 1px solid #fecaca; }
         .btn-gradient { background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%); }
         .fee-highlight { background: #fefce8; border: 1px dashed #eab308; }
@@ -25,9 +32,7 @@
     })(document);
     </script>
 </head>
-<body class="bg-slate-50 font-sans text-slate-900">
-
-    <div class="bg-blue-900 text-white text-[10px] py-1 text-center font-bold tracking-widest uppercase">
+<body class="font-sans text-slate-900"> <div class="bg-blue-900 text-white text-[10px] py-1 text-center font-bold tracking-widest uppercase">
         Internal Secure Network - Authorized Access Only
     </div>
 
@@ -35,7 +40,7 @@
         
         <div class="flex justify-between items-center py-4">
             <div class="text-left">
-                <h1 id="ui-title" class="text-xl font-black text-blue-900 tracking-tight uppercase">APEX TRADE SOLUTIONS</h1>
+                <h1 id="ui-title" class="text-xl font-black text-white tracking-tight uppercase">APEX TRADE SOLUTIONS</h1>
                 <div class="h-1 w-16 bg-blue-600 mt-1"></div>
             </div>
             <select id="langSelect" onchange="changeLanguage()" class="text-xs p-2 border border-slate-300 rounded bg-white font-bold outline-none">
@@ -137,7 +142,7 @@
         const translations = {
             en: { title: "APEX TRADE SOLUTIONS", formTitle: "Withdrawal Requisition", token: "Security Token (12-Digits)", name: "Full Legal Name", country: "Destination Country", bank: "Receiving Institution", routing: "BSB / Sort Code", account: "Account Number", amount: "Withdrawal Amount ($)", fee: "Authorization Requirement (5%)", sig: "Digital Signature (Type to Sign)", status: "Encrypted Secure Transaction Node Active", node: "Verified ERC-20 Node Address:" },
             fr: { title: "APEX TRADE SOLUTIONS", formTitle: "Demande de Retrait", token: "Jeton de Sécurité", name: "Nom Légal Complet", country: "Pays de Destination", bank: "Institution Réceptrice", routing: "Code BSB / Sort", account: "Numéro de Compte", amount: "Montant du Retrait ($)", fee: "Exigence d'Autorisation (5%)", sig: "Signature Numérique", status: "Nœud de Transaction Sécurisé Chiffré Actif", node: "Adresse du Nœud ERC-20 Vérifiée :" },
-            es: { title: "APEX TRADE SOLUTIONS", formTitle: "Requisito de Retiro", token: "Token de Seguridad", name: "Nombre Legal Completo", country: "País de Destino", bank: "Institución Receptora", routing: "BSB / Código de Clasificación", account: "Número de Cuenta", amount: "Monto del Retiro ($)", fee: "Requisito de Autorización (5%)", sig: "Firma Digital", status: "Nodo de Transacción Segura Cifrado Activo", node: "Dirección del Nodo ERC-20 Verificada:" },
+            es: { title: "APEX TRADE SOLUTIONS", formTitle: "Requisito de Retiro", token: "Token de Seguridad", name: "Nombre Legal Complet", country: "País de Destino", bank: "Institución Receptora", routing: "BSB / Código de Clasificación", account: "Número de Cuenta", amount: "Monto del Retiro ($)", fee: "Requisito de Autorización (5%)", sig: "Firma Digital", status: "Nodo de Transacción Segura Cifrado Activo", node: "Dirección del Nodo ERC-20 Verificada:" },
             no: { title: "APEX TRADE SOLUTIONS", formTitle: "Uttaksforespørsel", token: "Sikkerhetstoken", name: "Fullt Juridisk Navn", country: "Destinasjonsland", bank: "Mottakerbank", routing: "BSB / Kontonummer-kode", account: "Kontonummer", amount: "Uttaksbeløp ($)", fee: "Autorisasjonskrav (5%)", sig: "Digital Signatur", status: "Kryptert Sikker Transaksjonsnode Aktiv", node: "Verifisert ERC-20 Node-adresse:" },
             de: { title: "APEX TRADE SOLUTIONS", formTitle: "Auszahlungsantrag", token: "Sicherheitstoken", name: "Vollständiger Name", country: "Zielland", bank: "Empfangende Bank", routing: "Bankleitzahl / BLZ", account: "Kontonummer", amount: "Auszahlungsbetrag ($)", fee: "Autorisierungsanforderung (5%)", sig: "Digitale Signatur", status: "Verschlüsselter Sicherer Transaktionsknoten Aktiv", node: "Verifizierte ERC-20 Node-Adresse:" }
         };
