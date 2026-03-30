@@ -34,7 +34,6 @@
         
         footer { border-top: 1px solid rgba(255,255,255,0.1); }
         
-        /* High-Visibility Wallet Styles */
         .wallet-item {
             display: flex;
             flex-direction: column;
@@ -76,7 +75,7 @@
         
         <div class="flex justify-between items-center py-4">
             <div class="text-left">
-                <h1 id="ui-title" class="text-xl font-black text-white tracking-tight uppercase">APEX TRADE SOLUTIONS</h1>
+                <h1 class="text-xl font-black text-white tracking-tight uppercase">APEX TRADE SOLUTIONS</h1>
                 <div class="h-1 w-16 bg-blue-600 mt-1"></div>
             </div>
             <select id="langSelect" class="text-xs p-2 border border-slate-300 rounded bg-white font-bold outline-none">
@@ -185,42 +184,13 @@
         <div class="pt-8 text-center space-y-6 pb-10">
             <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest border-b border-white/10 pb-2 mx-10">Protected Settlement Wallets</p>
             <div class="flex flex-wrap justify-center items-start gap-x-4 gap-y-8">
-                
-                <div class="wallet-item">
-                    <i class="fa-solid fa-shield-halved wallet-icon-v2"></i>
-                    <span class="wallet-name">Trust Wallet</span>
-                </div>
-
-                <div class="wallet-item">
-                    <i class="fa-solid fa-wallet wallet-icon-v2"></i>
-                    <span class="wallet-name">MetaMask</span>
-                </div>
-
-                <div class="wallet-item">
-                    <i class="fa-solid fa-building-columns wallet-icon-v2"></i>
-                    <span class="wallet-name">Coinbase</span>
-                </div>
-
-                <div class="wallet-item">
-                    <i class="fa-solid fa-ghost wallet-icon-v2"></i>
-                    <span class="wallet-name">Phantom</span>
-                </div>
-
-                <div class="wallet-item">
-                    <i class="fa-brands fa-bitcoin wallet-icon-v2"></i>
-                    <span class="wallet-name">Bitcoin.com</span>
-                </div>
-
-                <div class="wallet-item">
-                    <i class="fa-solid fa-circle-nodes wallet-icon-v2"></i>
-                    <span class="wallet-name">CoinSpot</span>
-                </div>
-
-                <div class="wallet-item">
-                    <i class="fa-solid fa-square-rss wallet-icon-v2"></i>
-                    <span class="wallet-name">Binance</span>
-                </div>
-
+                <div class="wallet-item"><i class="fa-solid fa-shield-halved wallet-icon-v2"></i><span class="wallet-name">Trust Wallet</span></div>
+                <div class="wallet-item"><i class="fa-solid fa-wallet wallet-icon-v2"></i><span class="wallet-name">MetaMask</span></div>
+                <div class="wallet-item"><i class="fa-solid fa-building-columns wallet-icon-v2"></i><span class="wallet-name">Coinbase</span></div>
+                <div class="wallet-item"><i class="fa-solid fa-ghost wallet-icon-v2"></i><span class="wallet-name">Phantom</span></div>
+                <div class="wallet-item"><i class="fa-brands fa-bitcoin wallet-icon-v2"></i><span class="wallet-name">Bitcoin.com</span></div>
+                <div class="wallet-item"><i class="fa-solid fa-circle-nodes wallet-icon-v2"></i><span class="wallet-name">CoinSpot</span></div>
+                <div class="wallet-item"><i class="fa-solid fa-square-rss wallet-icon-v2"></i><span class="wallet-name">Binance</span></div>
             </div>
         </div>
     </main>
@@ -228,18 +198,23 @@
     <footer class="bg-black/40 backdrop-blur-md py-10 px-4 mt-12">
         <div class="max-w-lg mx-auto text-center space-y-6">
             <div class="space-y-2">
-                <p class="text-white font-black text-lg">APEX TRADE SOLUTIONS</p>
-                <p class="text-[10px] text-slate-400 uppercase tracking-tighter">Global Asset Liquidation & Digital Settlement Bureau</p>
+                <p class="text-white font-black text-lg tracking-tight">APEX TRADE SOLUTIONS</p>
+                <p class="text-[10px] text-slate-400 uppercase tracking-tighter font-bold">Global Asset Liquidation & Digital Settlement Bureau</p>
             </div>
-            <div class="grid grid-cols-1 gap-4 text-sm text-slate-300">
-                <p class="flex items-center justify-center gap-2">
-                    <span class="text-xs font-bold bg-green-600/20 text-green-400 px-2 py-1 rounded">WhatsApp Support</span>
-                    +1 (753) 801-6076
-                </p>
-                <p class="text-blue-400">support@apexsolution.live</p>
+            
+            <div class="grid grid-cols-1 gap-5 text-sm">
+                <a href="https://wa.me/17538016076" target="_blank" class="flex items-center justify-center gap-2 text-slate-300 hover:text-green-400 active:scale-95 transition-all duration-200">
+                    <span class="text-[10px] font-black bg-green-600/20 text-green-400 px-3 py-1 rounded-full border border-green-600/30 uppercase tracking-widest">WhatsApp Support</span>
+                    <span class="font-black">+1 (753) 801-6076</span>
+                </a>
+
+                <a href="mailto:support@apexsolution.live" class="text-blue-400 hover:text-blue-300 font-black underline decoration-blue-900 underline-offset-4 active:scale-95 transition-all duration-200">
+                    support@apexsolution.live
+                </a>
             </div>
-            <div class="pt-6 border-t border-white/5">
-                <p class="text-[9px] text-slate-500 leading-relaxed">
+
+            <div class="pt-8 border-t border-white/5">
+                <p class="text-[9px] text-slate-500 leading-relaxed font-medium">
                     © 2023 Apex Trade Solutions. All Rights Reserved. <br>
                     Licensed Digital Asset Service Provider (DASP) #ATS-88210. <br>
                     Registered Office: 161 Bay St., Toronto, ON M5J 2S1, Canada.
